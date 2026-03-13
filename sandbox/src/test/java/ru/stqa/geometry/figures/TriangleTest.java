@@ -41,6 +41,54 @@ class TriangleTest {
         Assertions.assertEquals(11.98, roundToTwoDecimal(t.square()));
     }
 
+    @Test
+    void canNotCreateTriangleWithNegativeSideA() {
+        try {
+            new Triangle(-1, 3, 2);
+        } catch (IllegalArgumentException exception) {
+        }
+    }
+
+    @Test
+    void canNotCreateTriangleWithNegativeSideB() {
+        try {
+            new Triangle(1, -3, 2);
+        } catch (IllegalArgumentException exception) {
+        }
+    }
+
+    @Test
+    void canNotCreateTriangleWithNegativeSideС() {
+        try {
+            new Triangle(1, 3, -2);
+        } catch (IllegalArgumentException exception) {
+        }
+    }
+
+    @Test
+    void lengthOfAAndBIsNotLessThanC() {
+        try {
+            new Triangle(1, 2, 5);
+        } catch (IllegalArgumentException exception) {
+        }
+    }
+
+    @Test
+    void lengthOfBAndCIsNotLessThanA() {
+        try {
+            new Triangle(4, 1, 1);
+        } catch (IllegalArgumentException exception) {
+        }
+    }
+
+    @Test
+    void lengthOfCAndAIsNotLessThanB() {
+        try {
+            new Triangle(3, 4, 0);
+        } catch (IllegalArgumentException exception) {
+        }
+    }
+
     private double roundToTwoDecimal(double d) {
         return Math.round(d * 100) / 100.0;
     }

@@ -5,9 +5,10 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="fe4831d1-368d-4528-8ef5-34a110a15883" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/sandbox/src/main/java/ru/stqa/geometry/figures/Triangle.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/sandbox/src/test/java/ru/stqa/geometry/figures/TriangleTest.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/gradle.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/gradle.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/sandbox/src/main/java/ru/stqa/geometry/figures/Triangle.java" beforeDir="false" afterPath="$PROJECT_DIR$/sandbox/src/main/java/ru/stqa/geometry/figures/Triangle.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/sandbox/src/test/java/ru/stqa/geometry/figures/TriangleTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/sandbox/src/test/java/ru/stqa/geometry/figures/TriangleTest.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -57,6 +58,7 @@
   </component>
   <component name="PropertiesComponent">{
   &quot;keyToString&quot;: {
+    &quot;RunOnceActivity.OpenProjectViewOnStart&quot;: &quot;true&quot;,
     &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
     &quot;com.intellij.testIntegration.createTest.CreateTestDialog.defaultLibrary&quot;: &quot;JUnit5&quot;,
     &quot;com.intellij.testIntegration.createTest.CreateTestDialog.defaultLibrarySuperClass.JUnit5&quot;: &quot;&quot;,
@@ -64,7 +66,8 @@
     &quot;last_opened_file_path&quot;: &quot;C:/develop/homework/java_for_testers&quot;,
     &quot;project.structure.last.edited&quot;: &quot;Modules&quot;,
     &quot;project.structure.proportion&quot;: &quot;0.15&quot;,
-    &quot;project.structure.side.proportion&quot;: &quot;0.2&quot;
+    &quot;project.structure.side.proportion&quot;: &quot;0.2&quot;,
+    &quot;settings.editor.selected.configurable&quot;: &quot;Console&quot;
   }
 }</component>
   <component name="RecentsManager">
@@ -100,7 +103,7 @@
       <ForceTestExec>true</ForceTestExec>
       <method v="2" />
     </configuration>
-    <configuration name="TriangleTest.canCalculatePerimeterForIsoscelesTriangle" type="GradleRunConfiguration" factoryName="Gradle" temporary="true">
+    <configuration name="TriangleTest.canNotCreateTriangleWithNegativeSideA" type="GradleRunConfiguration" factoryName="Gradle" temporary="true">
       <ExternalSystemSettings>
         <option name="executionName" />
         <option name="externalProjectPath" value="$PROJECT_DIR$/sandbox" />
@@ -113,7 +116,7 @@
           <list>
             <option value=":test" />
             <option value="--tests" />
-            <option value="&quot;ru.stqa.geometry.figures.TriangleTest.canCalculatePerimeterForIsoscelesTriangle&quot;" />
+            <option value="&quot;ru.stqa.geometry.figures.TriangleTest.canNotCreateTriangleWithNegativeSideA&quot;" />
           </list>
         </option>
         <option name="vmOptions" />
@@ -124,7 +127,7 @@
       <ForceTestExec>true</ForceTestExec>
       <method v="2" />
     </configuration>
-    <configuration name="TriangleTest.canCalculatePerimeterForRightAngle" type="GradleRunConfiguration" factoryName="Gradle" temporary="true">
+    <configuration name="TriangleTest.canNotCreateTriangleWithNegativeSideB" type="GradleRunConfiguration" factoryName="Gradle" temporary="true">
       <ExternalSystemSettings>
         <option name="executionName" />
         <option name="externalProjectPath" value="$PROJECT_DIR$/sandbox" />
@@ -137,7 +140,7 @@
           <list>
             <option value=":test" />
             <option value="--tests" />
-            <option value="&quot;ru.stqa.geometry.figures.TriangleTest.canCalculatePerimeterForRightAngle&quot;" />
+            <option value="&quot;ru.stqa.geometry.figures.TriangleTest.canNotCreateTriangleWithNegativeSideB&quot;" />
           </list>
         </option>
         <option name="vmOptions" />
@@ -148,7 +151,7 @@
       <ForceTestExec>true</ForceTestExec>
       <method v="2" />
     </configuration>
-    <configuration name="TriangleTest.canCalculateSquareForIsoscelesTriangle" type="GradleRunConfiguration" factoryName="Gradle" temporary="true">
+    <configuration name="TriangleTest.lengthOfCAndAIsNotLessThanB" type="GradleRunConfiguration" factoryName="Gradle" temporary="true">
       <ExternalSystemSettings>
         <option name="executionName" />
         <option name="externalProjectPath" value="$PROJECT_DIR$/sandbox" />
@@ -161,7 +164,7 @@
           <list>
             <option value=":test" />
             <option value="--tests" />
-            <option value="&quot;ru.stqa.geometry.figures.TriangleTest.canCalculateSquareForIsoscelesTriangle&quot;" />
+            <option value="&quot;ru.stqa.geometry.figures.TriangleTest.lengthOfCAndAIsNotLessThanB&quot;" />
           </list>
         </option>
         <option name="vmOptions" />
@@ -172,7 +175,7 @@
       <ForceTestExec>true</ForceTestExec>
       <method v="2" />
     </configuration>
-    <configuration name="TriangleTest.canCalculateSquareForRightAngle" type="GradleRunConfiguration" factoryName="Gradle" temporary="true">
+    <configuration name="TriangleTest.triangleInequalityIsNotViolated" type="GradleRunConfiguration" factoryName="Gradle" temporary="true">
       <ExternalSystemSettings>
         <option name="executionName" />
         <option name="externalProjectPath" value="$PROJECT_DIR$/sandbox" />
@@ -185,7 +188,7 @@
           <list>
             <option value=":test" />
             <option value="--tests" />
-            <option value="&quot;ru.stqa.geometry.figures.TriangleTest.canCalculateSquareForRightAngle&quot;" />
+            <option value="&quot;ru.stqa.geometry.figures.TriangleTest.triangleInequalityIsNotViolated&quot;" />
           </list>
         </option>
         <option name="vmOptions" />
@@ -199,10 +202,10 @@
     <recent_temporary>
       <list>
         <item itemvalue="Gradle.TriangleTest" />
-        <item itemvalue="Gradle.TriangleTest.canCalculateSquareForIsoscelesTriangle" />
-        <item itemvalue="Gradle.TriangleTest.canCalculatePerimeterForIsoscelesTriangle" />
-        <item itemvalue="Gradle.TriangleTest.canCalculateSquareForRightAngle" />
-        <item itemvalue="Gradle.TriangleTest.canCalculatePerimeterForRightAngle" />
+        <item itemvalue="Gradle.TriangleTest.lengthOfCAndAIsNotLessThanB" />
+        <item itemvalue="Gradle.TriangleTest.triangleInequalityIsNotViolated" />
+        <item itemvalue="Gradle.TriangleTest.canNotCreateTriangleWithNegativeSideB" />
+        <item itemvalue="Gradle.TriangleTest.canNotCreateTriangleWithNegativeSideA" />
       </list>
     </recent_temporary>
   </component>
@@ -216,5 +219,27 @@
       <updated>1772554506784</updated>
     </task>
     <servers />
+  </component>
+  <component name="Vcs.Log.Tabs.Properties">
+    <option name="TAB_STATES">
+      <map>
+        <entry key="MAIN">
+          <value>
+            <State />
+          </value>
+        </entry>
+      </map>
+    </option>
+  </component>
+  <component name="XDebuggerManager">
+    <breakpoint-manager>
+      <breakpoints>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/sandbox/src/test/java/ru/stqa/geometry/figures/TriangleTest.java</url>
+          <line>83</line>
+          <option name="timeStamp" value="1" />
+        </line-breakpoint>
+      </breakpoints>
+    </breakpoint-manager>
   </component>
 </project>
