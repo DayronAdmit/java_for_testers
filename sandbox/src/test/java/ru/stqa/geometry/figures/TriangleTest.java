@@ -89,6 +89,27 @@ class TriangleTest {
         }
     }
 
+    @Test
+    void checkEquals() {
+        var t1 = new Triangle(3.1, 4.2, 5.3);
+        var t2 = new Triangle(3.1, 4.2, 5.3);
+        Assertions.assertEquals(t1, t2);
+    }
+
+    @Test
+    void checkEqualsRotatedTriangle() {
+        var t1 = new Triangle(3, 4, 5);
+        var t2 = new Triangle(4, 5, 3);
+        Assertions.assertEquals(t1, t2);
+    }
+
+    @Test
+    void checkEqualsInvertedTriangle() {
+        var t1 = new Triangle(6.1, 7.2, 5.0);
+        var t2 = new Triangle(6.1, 5.0, 7.2);
+        Assertions.assertEquals(t1, t2);
+    }
+
     private double roundToTwoDecimal(double d) {
         return Math.round(d * 100) / 100.0;
     }

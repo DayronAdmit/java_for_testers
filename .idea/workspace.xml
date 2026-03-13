@@ -5,7 +5,6 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="fe4831d1-368d-4528-8ef5-34a110a15883" name="Changes" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/gradle.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/gradle.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/sandbox/src/main/java/ru/stqa/geometry/figures/Triangle.java" beforeDir="false" afterPath="$PROJECT_DIR$/sandbox/src/main/java/ru/stqa/geometry/figures/Triangle.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/sandbox/src/test/java/ru/stqa/geometry/figures/TriangleTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/sandbox/src/test/java/ru/stqa/geometry/figures/TriangleTest.java" afterDir="false" />
@@ -236,7 +235,7 @@
       <breakpoints>
         <line-breakpoint enabled="true" type="java-line">
           <url>file://$PROJECT_DIR$/sandbox/src/test/java/ru/stqa/geometry/figures/TriangleTest.java</url>
-          <line>83</line>
+          <line>86</line>
           <option name="timeStamp" value="1" />
         </line-breakpoint>
       </breakpoints>

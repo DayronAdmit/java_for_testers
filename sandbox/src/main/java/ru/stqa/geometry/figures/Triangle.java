@@ -1,9 +1,28 @@
 package ru.stqa.geometry.figures;
 
+import java.util.Arrays;
+
 public class Triangle {
     double a;
     double b;
     double c;
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+        Triangle triangle = (Triangle) o;
+        double[] thisSides = {a, b, c};
+        double[] otherSides = {triangle.a, triangle.b, triangle.c};
+        java.util.Arrays.sort(thisSides);
+        java.util.Arrays.sort(otherSides);
+        return Arrays.equals(thisSides, otherSides);
+    }
+
+    @Override
+    public int hashCode() {
+        return 1;
+    }
 
     public Triangle(double a, double b, double c) {
         this.a = a;
