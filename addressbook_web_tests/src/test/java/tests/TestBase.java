@@ -13,10 +13,10 @@ public class TestBase {
         if (app == null) {
             app = new ApplicationManager();
         }
-        app.init(System.getProperty("browser","firefox"));
+        app.init(System.getProperty("browser", "firefox"));
     }
 
-    public String randomString(int n) {
+    public static String randomString(int n) {
         var rnd = new Random();
         var result = "";
         for (int i = 0; i < n; i++) {
