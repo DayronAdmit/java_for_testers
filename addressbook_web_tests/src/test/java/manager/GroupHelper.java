@@ -3,7 +3,7 @@ package manager;
 import model.GroupData;
 import org.openqa.selenium.By;
 
-public class GroupHelper extends BaseHelper{
+public class GroupHelper extends BaseHelper {
 
     public GroupHelper(ApplicationManager manager) {
         super(manager);
@@ -20,7 +20,7 @@ public class GroupHelper extends BaseHelper{
     public void removeGroup() {
         openGroupsPage();
         selectGroup();
-        removeSelectedGroup();
+        removeSelectedGroups();
         returnToGroupsPage();
     }
 
@@ -69,12 +69,25 @@ public class GroupHelper extends BaseHelper{
         }
     }
 
-    public boolean isGroupPresent() {
-        openGroupsPage();
-        return manager.isElementPresent(By.name("selected[]"));
+    private void removeSelectedGroups() {
+        click(By.name("delete"));
     }
 
-    private void removeSelectedGroup() {
-        click(By.name("delete"));
+    public int getCount() {
+        openGroupsPage();
+        return manager.driver.findElements(By.name("selected[]")).size();
+    }
+
+    public void removeAllGroups() {
+        openGroupsPage();
+        selectAllGroups();
+        removeSelectedGroups();
+    }
+
+    private void selectAllGroups() {
+        var checkBoxes = manager.driver.findElements(By.name("selected[]"));
+        for (var checkBox : checkBoxes) {
+            checkBox.click();
+        }
     }
 }
