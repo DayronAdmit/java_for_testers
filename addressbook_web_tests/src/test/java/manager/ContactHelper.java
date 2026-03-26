@@ -45,11 +45,6 @@ public class ContactHelper extends BaseHelper {
         }
     }
 
-    public boolean isContactPresent() {
-        openContactPage();
-        return manager.isElementPresent(By.name("selected[]"));
-    }
-
     public void deleteContact(ContactData contact) {
         openContactPage();
         selectContact(contact);
@@ -77,5 +72,25 @@ public class ContactHelper extends BaseHelper {
             contacts.add(new ContactData().withId(id).withLastName(lastName).withFirstName(firstName));
         }
         return contacts;
+    }
+
+    public void modifyContact(ContactData contactData, ContactData testDate) {
+        openContactPage();
+        initContactModification(contactData);
+        fillContactForm(testDate);
+        submitChanges();
+        returnToGroupsPage();
+    }
+
+    private void returnToGroupsPage() {
+        click(By.linkText("home page"));
+    }
+
+    private void submitChanges() {
+        click(By.name("update"));
+    }
+
+    private void initContactModification(ContactData contactData) {
+        click(By.xpath(String.format("//input[@value='%s']/ancestor::tr//*[@title='Edit']", contactData.id())));
     }
 }
