@@ -71,8 +71,8 @@ public class ContactHelper extends BaseHelper {
         var contacts = new ArrayList<ContactData>();
         var trs = manager.driver.findElements(By.cssSelector("tr[name=entry]"));
         for (var tr : trs) {
-            var lastName =tr.findElement(By.cssSelector("td:nth-child(2)")).getText();
-            var firstName =tr.findElement(By.cssSelector("td:nth-child(3)")).getText();
+            var lastName = tr.findElement(By.cssSelector("td:nth-child(2)")).getText();
+            var firstName = tr.findElement(By.cssSelector("td:nth-child(3)")).getText();
             var id = tr.findElement(By.cssSelector("input")).getAttribute("value");
             contacts.add(new ContactData().withId(id).withLastName(lastName).withFirstName(firstName));
         }
