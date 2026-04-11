@@ -1,5 +1,6 @@
 package manager;
 
+import common.CommonFunction;
 import model.GroupData;
 import org.openqa.selenium.By;
 
@@ -105,5 +106,13 @@ public class GroupHelper extends BaseHelper {
             groups.add(new GroupData().withId(id).withName(name));
         }
         return groups;
+    }
+
+    public GroupData generateGroup() {
+        return new GroupData()
+                .withId("")
+                .withName(CommonFunction.randomString(10))
+                .withHeader(CommonFunction.randomString(20))
+                .withFooter(CommonFunction.randomString(8));
     }
 }

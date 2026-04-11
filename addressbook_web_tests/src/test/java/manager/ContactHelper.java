@@ -1,5 +1,6 @@
 package manager;
 
+import common.CommonFunction;
 import model.ContactData;
 import model.GroupData;
 import org.openqa.selenium.By;
@@ -63,7 +64,6 @@ public class ContactHelper extends BaseHelper {
         selectContact(contact);
         removeSelectedContact();
         returnToContactPage();
-
     }
 
     private void removeSelectedContact() {
@@ -92,10 +92,10 @@ public class ContactHelper extends BaseHelper {
         initContactModification(contactData);
         fillContactForm(testDate);
         submitChanges();
-        returnToGroupsPage();
+        returnToHomePage();
     }
 
-    private void returnToGroupsPage() {
+    private void returnToHomePage() {
         click(By.linkText("home page"));
     }
 
@@ -105,5 +105,44 @@ public class ContactHelper extends BaseHelper {
 
     private void initContactModification(ContactData contactData) {
         click(By.xpath(String.format("//input[@value='%s']/ancestor::tr//*[@title='Edit']", contactData.id())));
+    }
+
+    public void checkGroupById(String id) {
+        new Select(manager.driver.findElement(By.name("group"))).selectByValue(id);
+    }
+
+    public void chooseContactsWithoutGroup() {
+        new Select(manager.driver.findElement(By.name("group"))).selectByValue("[none]");
+    }
+
+    public void addCotactToGroup(ContactData contact, GroupData group) {
+        selectContact(contact);
+        chooseGroupToAdding(group);
+        click(By.name("add"));
+        openContactPage();
+    }
+
+    public void removeContactFromGroup(ContactData contact) {
+        selectContact(contact);
+        click(By.name("remove"));
+        openContactPage();
+    }
+
+    private void chooseGroupToAdding(GroupData group) {
+        new Select(manager.driver.findElement(By.name("to_group"))).selectByValue(group.id());
+    }
+
+    public void chooseContactGroup(GroupData group) {
+        new Select(manager.driver.findElement(By.name("group"))).selectByValue(group.id());
+    }
+
+    public ContactData generateContact() {
+        return new ContactData()
+                .withId("")
+                .withLastName(CommonFunction.randomString(10))
+                .withFirstName(CommonFunction.randomString(8))
+                .withAddress(CommonFunction.randomString(20))
+                .withEmail(CommonFunction.randomString(15))
+                .withMobilePhone(CommonFunction.randomString(10));
     }
 }

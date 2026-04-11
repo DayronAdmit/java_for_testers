@@ -9,6 +9,7 @@ import org.hibernate.cfg.Configuration;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Random;
 
 public class HibernateHelper extends BaseHelper {
     private SessionFactory sessionFactory;
@@ -18,7 +19,7 @@ public class HibernateHelper extends BaseHelper {
         sessionFactory = new Configuration()
                 .addAnnotatedClass(GroupRecord.class)
                 .addAnnotatedClass(ContactRecord.class)
-                .setJdbcUrl("jdbc:mysql://localhost/addressbook?zero")
+                .setJdbcUrl("jdbc:mysql://localhost/addressbook?zeroDateTimeBehavior=convertToNull")
                 .setCredentials("root", "")
                 .buildSessionFactory();
     }
@@ -47,6 +48,10 @@ public class HibernateHelper extends BaseHelper {
         return convertGroupList(sessionFactory.fromSession(session -> {
             return session.createQuery("from GroupRecord", GroupRecord.class).list();
         }));
+    }
+
+    public GroupData getRandomGroup() {
+        return getGroupList().get(new Random().nextInt(getGroupList().size()));
     }
 
     public long getGroupCount() {
