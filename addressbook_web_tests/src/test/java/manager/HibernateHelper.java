@@ -18,7 +18,7 @@ public class HibernateHelper extends BaseHelper {
         sessionFactory = new Configuration()
                 .addAnnotatedClass(GroupRecord.class)
                 .addAnnotatedClass(ContactRecord.class)
-                .setJdbcUrl("jdbc:mysql://localhost/addressbook")
+                .setJdbcUrl("jdbc:mysql://localhost/addressbook?zero")
                 .setCredentials("root", "")
                 .buildSessionFactory();
     }
@@ -105,6 +105,12 @@ public class HibernateHelper extends BaseHelper {
             session.getTransaction().begin();
             session.persist(convert(data));
             session.getTransaction().commit();
+        });
+    }
+
+    public List<ContactData> getContactsInGroup(GroupData group) {
+        return sessionFactory.fromSession(session -> {
+            return convertContactList(session.find(GroupRecord.class, group.id()).contacts);
         });
     }
 }

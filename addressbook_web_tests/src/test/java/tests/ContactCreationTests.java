@@ -2,8 +2,11 @@ package tests;
 
 import com.fasterxml.jackson.core.type.TypeReference;
 import com.fasterxml.jackson.databind.ObjectMapper;
+import common.CommonFunction;
 import model.ContactData;
+import model.GroupData;
 import org.junit.jupiter.api.Assertions;
+import org.junit.jupiter.api.Test;
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.MethodSource;
 
@@ -14,6 +17,30 @@ import java.util.Comparator;
 import java.util.List;
 
 public class ContactCreationTests extends TestBase {
+
+    @Test
+    public void canCreateContactInGroup() {
+        var contact = new ContactData()
+                .withFirstName(CommonFunction.randomString(7))
+                .withLastName(CommonFunction.randomString(12));
+        if (app.hbm().getGroupCount() == 0) {
+            app.hbm().createGroup(new GroupData("", "", "", ""));
+        }
+        var group = app.hbm().getGroupList().get(0);
+
+        var oldRelated = app.hbm().getContactsInGroup(group);
+        app.contact().createContact(contact, group);
+        var newRelated = app.hbm().getContactsInGroup(group);
+        Comparator<ContactData> compareById = (o1, o2) -> {
+            return Integer.compare(Integer.parseInt(o1.id()), Integer.parseInt(o2.id()));
+        };
+        newRelated.sort(compareById);
+        var expectedRelated = new ArrayList<>(oldRelated);
+        expectedRelated.add(contact.withId(newRelated.get(newRelated.size() - 1).id()));
+        expectedRelated.sort(compareById);
+        Assertions.assertEquals(expectedRelated, newRelated);
+    }
+
 
     @ParameterizedTest
     @MethodSource("contactProvider")
