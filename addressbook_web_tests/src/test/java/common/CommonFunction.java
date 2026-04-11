@@ -2,7 +2,7 @@ package common;
 
 import java.util.Random;
 
-public class ComanFunction {
+public class CommonFunction {
     public static String randomString(int n) {
         var rnd = new Random();
         var result = "";

@@ -12,7 +12,7 @@ import java.io.File;
 import java.io.IOException;
 import java.util.ArrayList;
 
-import static common.ComanFunction.randomString;
+import static common.CommonFunction.randomString;
 
 public class Generator {
     @Parameter(names = {"--type", "-t"})

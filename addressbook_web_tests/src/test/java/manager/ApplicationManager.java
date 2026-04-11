@@ -14,6 +14,8 @@ public class ApplicationManager {
     private LoginHelper session;
     private GroupHelper groups;
     private ContactHelper contact;
+    private JdbcHelper jdbc;
+    private HibernateHelper hbm;
     private Properties properties;
 
     public void init(String browser, Properties properties) {
@@ -31,6 +33,10 @@ public class ApplicationManager {
             driver.manage().window().setSize(new Dimension(1308, 792));
             session().login(properties.getProperty("web.username"), properties.getProperty("web.password"));
         }
+    }
+
+    public void reloadPage() {
+        driver.get(driver.getCurrentUrl());
     }
 
     protected boolean isElementPresent(By locator) {
@@ -54,6 +60,20 @@ public class ApplicationManager {
             groups = new GroupHelper(this);
         }
         return groups;
+    }
+
+    public JdbcHelper jdbc() {
+        if (jdbc == null) {
+            jdbc = new JdbcHelper(this);
+        }
+        return jdbc;
+    }
+
+    public HibernateHelper hbm() {
+        if (hbm == null) {
+            hbm = new HibernateHelper(this);
+        }
+        return hbm;
     }
 
     public ContactHelper contact() {
