@@ -70,7 +70,12 @@ public class HibernateHelper extends BaseHelper {
                 .withLastName(record.lastName)
                 .withFirstName(record.firstName)
                 .withAddress(record.address)
-                .withMobilePhone(record.mobilePhone);
+                .withMobilePhone(record.mobilePhone)
+                .withHome(record.home)
+                .withWork(record.work)
+                .withEmail(record.email)
+                .withEmail2(record.email2)
+                .withEmail3(record.email3);
     }
 
     private static ContactRecord convert(ContactData data) {

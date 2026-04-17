@@ -18,8 +18,8 @@ public class ContactRecord {
     public String nikName= "";
     public String company= "";
     public String title= "";
-    public String home= "";
-    public String work= "";
+    public String home;
+    public String work;
     public String fax= "";
     public String address;
     public String email;

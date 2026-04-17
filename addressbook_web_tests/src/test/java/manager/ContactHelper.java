@@ -4,10 +4,13 @@ import common.CommonFunction;
 import model.ContactData;
 import model.GroupData;
 import org.openqa.selenium.By;
+import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.ui.Select;
 
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 public class ContactHelper extends BaseHelper {
     public ContactHelper(ApplicationManager manager) {
@@ -30,7 +33,7 @@ public class ContactHelper extends BaseHelper {
     }
 
     private void selectGroup(GroupData group) {
-       new Select(manager.driver.findElement(By.name("new_group"))).selectByValue(group.id());
+        new Select(manager.driver.findElement(By.name("new_group"))).selectByValue(group.id());
     }
 
     public void fillContactForm(ContactData contact) {
@@ -144,5 +147,44 @@ public class ContactHelper extends BaseHelper {
                 .withAddress(CommonFunction.randomString(20))
                 .withEmail(CommonFunction.randomString(15))
                 .withMobilePhone(CommonFunction.randomString(10));
+    }
+
+    public String getPhones(ContactData contact) {
+        return manager.driver.findElement(By.xpath(
+                        String.format("//input[@id='%s']/../../td[6]", contact.id())))
+                .getText();
+    }
+
+    public Map<String, String> getPhones() {
+        var result = new HashMap<String, String>();
+        var rows = manager.driver.findElements(By.name("entry"));
+        for (WebElement row : rows) {
+            var id = row.findElement(By.tagName("input")).getAttribute("id");
+            var phones = row.findElements(By.tagName("td")).get(5).getText();
+            result.put(id, phones);
+        }
+        return result;
+    }
+
+    public Map<String, String> getEmails() {
+        var result = new HashMap<String, String>();
+        var rows = manager.driver.findElements(By.name("entry"));
+        for (WebElement row : rows) {
+            var id = row.findElement(By.tagName("input")).getAttribute("id");
+            var phones = row.findElements(By.tagName("td")).get(4).getText();
+            result.put(id, phones);
+        }
+        return result;
+    }
+
+    public Map<String, String> getAddresses() {
+        var result = new HashMap<String, String>();
+        var rows = manager.driver.findElements(By.name("entry"));
+        for (WebElement row : rows) {
+            var id = row.findElement(By.tagName("input")).getAttribute("id");
+            var phones = row.findElements(By.tagName("td")).get(3).getText();
+            result.put(id, phones);
+        }
+        return result;
     }
 }
