@@ -12,9 +12,7 @@ import org.junit.jupiter.params.provider.MethodSource;
 
 import java.io.File;
 import java.io.IOException;
-import java.util.ArrayList;
-import java.util.Comparator;
-import java.util.List;
+import java.util.*;
 
 public class ContactCreationTests extends TestBase {
 
@@ -31,16 +29,12 @@ public class ContactCreationTests extends TestBase {
         var oldRelated = app.hbm().getContactsInGroup(group);
         app.contact().createContact(contact, group);
         var newRelated = app.hbm().getContactsInGroup(group);
-        Comparator<ContactData> compareById = (o1, o2) -> {
-            return Integer.compare(Integer.parseInt(o1.id()), Integer.parseInt(o2.id()));
-        };
-        newRelated.sort(compareById);
+        var extraContacts = newRelated.stream().filter(c -> !oldRelated.contains(c)).toList();
+        var extraId = extraContacts.get(0).id();
         var expectedRelated = new ArrayList<>(oldRelated);
-        expectedRelated.add(contact.withId(newRelated.get(newRelated.size() - 1).id()));
-        expectedRelated.sort(compareById);
-        Assertions.assertEquals(expectedRelated, newRelated);
+        expectedRelated.add(contact.withId(extraId));
+        Assertions.assertEquals(Set.copyOf(expectedRelated), Set.copyOf(newRelated));
     }
-
 
     @ParameterizedTest
     @MethodSource("contactProvider")
@@ -48,14 +42,13 @@ public class ContactCreationTests extends TestBase {
         var oldContacts = app.hbm().getContactList();
         app.contact().createContact(contact);
         var newContacts = app.hbm().getContactList();
-        Comparator<ContactData> compareById = (o1, o2) -> {
-            return Integer.compare(Integer.parseInt(o1.id()), Integer.parseInt(o2.id()));
-        };
-        newContacts.sort(compareById);
+        var extraContactId = newContacts.stream()
+                .filter(c -> !oldContacts.contains(c))
+                .map(c -> c.id())
+                .findFirst().orElseThrow(() -> new NoSuchElementException("Списки не различаются"));
         var expectedList = new ArrayList<>(oldContacts);
-        expectedList.add(contact.withId(newContacts.get(newContacts.size() - 1).id()));
-        expectedList.sort(compareById);
-        Assertions.assertEquals(expectedList, newContacts);
+        expectedList.add(contact.withId(extraContactId));
+        Assertions.assertEquals(Set.copyOf(expectedList), Set.copyOf(newContacts));
     }
 
     public static List<ContactData> contactProvider() throws IOException {
