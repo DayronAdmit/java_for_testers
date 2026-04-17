@@ -11,6 +11,9 @@ import model.GroupData;
 import java.io.File;
 import java.io.IOException;
 import java.util.ArrayList;
+import java.util.function.Supplier;
+import java.util.stream.Collectors;
+import java.util.stream.Stream;
 
 import static common.CommonFunction.randomString;
 
@@ -31,6 +34,10 @@ public class Generator {
                 .build()
                 .parse(args);
         generator.run();
+    }
+
+    private Object generateData(Supplier<Object> dataSupplier) {
+        return Stream.generate(dataSupplier).limit(count).collect(Collectors.toList());
     }
 
     private void run() throws IOException {
@@ -59,14 +66,11 @@ public class Generator {
     }
 
     private Object generateGroups() {
-        var result = new ArrayList<GroupData>();
-        for (int i = 0; i < count; i++) {
-            result.add(new GroupData()
-                    .withName(randomString(i * 5))
-                    .withHeader(randomString(i * 5))
-                    .withFooter(randomString(i * 5)));
-        }
-        return result;
+
+        return generateData(() -> new GroupData()
+                .withName(randomString(10))
+                .withHeader(randomString(10))
+                .withFooter(randomString(10)));
     }
 
     private Object generateContacts() {
@@ -79,6 +83,11 @@ public class Generator {
                     .withEmail(randomString(i * 5))
                     .withMobilePhone(randomString(i * 5)));
         }
-        return result;
+        return generateData(() -> new ContactData()
+                .withLastName(randomString(7))
+                .withFirstName(randomString(7))
+                .withAddress(randomString(7))
+                .withEmail(randomString(7))
+                .withMobilePhone(randomString(7)));
     }
 }

@@ -13,6 +13,8 @@ import java.io.IOException;
 import java.util.ArrayList;
 import java.util.Comparator;
 import java.util.List;
+import java.util.function.Supplier;
+import java.util.stream.Stream;
 
 public class GroupCreationTests extends TestBase {
 
@@ -59,12 +61,11 @@ public class GroupCreationTests extends TestBase {
         return result;
     }
 
-    public static List<GroupData> singleRandomGroup() throws IOException {
-        return List.of(new GroupData()
-                .withName(CommonFunction.randomString(10))
+    public static Stream<GroupData> singleRandomGroup() throws IOException {
+        Supplier<GroupData> randomGroup = () -> new GroupData().withName(CommonFunction.randomString(10))
                 .withHeader(CommonFunction.randomString(15))
-                .withFooter(CommonFunction.randomString(20))
-        );
+                .withFooter(CommonFunction.randomString(20));
+        return Stream.generate(randomGroup).limit(3);
     }
 
     public static List<GroupData> negativeGroupProvider() {
