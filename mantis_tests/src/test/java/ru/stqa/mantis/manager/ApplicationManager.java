@@ -12,7 +12,11 @@ public class ApplicationManager {
     private String browser;
     private Properties properties;
     private SessionHelper sessionHelper;
+    private HttpSessionHelper httpSessionHelper;
+    private JamesCliHelper jamesCliHelper;
+    private MailHelper mailHelper;
 
+    private WebRegistrationHelper webRegistrationHelper;
 
     public void init(String browser, Properties properties) {
         this.browser = browser;
@@ -40,5 +44,41 @@ public class ApplicationManager {
             sessionHelper = new SessionHelper(this);
         }
         return sessionHelper;
+    }
+
+    public HttpSessionHelper http() {
+        if (httpSessionHelper == null) {
+            httpSessionHelper = new HttpSessionHelper(this);
+        }
+        return httpSessionHelper;
+    }
+
+    public JamesCliHelper jamesCli() {
+        if (jamesCliHelper == null) {
+            jamesCliHelper = new JamesCliHelper(this);
+        }
+        return jamesCliHelper;
+    }
+
+    public MailHelper mail() {
+        if (mailHelper == null) {
+            mailHelper = new MailHelper(this);
+        }
+        return mailHelper;
+    }
+
+    public WebRegistrationHelper webHelper() {
+        if (webRegistrationHelper == null) {
+            webRegistrationHelper = new WebRegistrationHelper(this);
+        }
+        return webRegistrationHelper;
+    }
+
+    public void openLink(String link) {
+        driver.get(link);
+    }
+
+    public String property(String name) {
+        return properties.getProperty(name);
     }
 }
