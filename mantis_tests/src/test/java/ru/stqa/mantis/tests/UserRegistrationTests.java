@@ -9,12 +9,11 @@ public class UserRegistrationTests extends TestBase {
 
     @Test
     void canRegisterUser() {
-        String username = "user1";
+        String username = "user21";
         String password = "password";
         var email = String.format("%s@localhost", username);
-
-        app.jamesCli().addUser(email, password);
-        app.webHelper().initRegistration(username, email);
+        app.jamesApi().addUser(email, password);
+        app.rest().initRegistration(username, email);
         var mailMessages = app.mail().receive(email, password, Duration.ofSeconds(100));
         var activationLink = app.mail().extractLink(mailMessages);
         app.openLink(activationLink);
