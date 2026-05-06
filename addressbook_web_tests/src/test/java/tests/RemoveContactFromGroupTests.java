@@ -16,6 +16,8 @@ public class RemoveContactFromGroupTests extends TestBase {
             app.hbm().createGroup(app.groups().generateGroup());
         }
         var groupFromRemove = app.hbm().getRandomGroup();
+
+        app.contact().openContactPage();
         app.contact().chooseContactGroup(groupFromRemove);
 
         if (app.contact().getList().size() == 0) {

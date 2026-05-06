@@ -18,6 +18,7 @@ public class AddContactToGroupTests extends TestBase {
         var groupToAdd = app.hbm().getRandomGroup();
         var oldContactListInGroup = app.hbm().getContactsInGroup(groupToAdd);
 
+        app.contact().openContactPage();
         app.contact().chooseContactsWithoutGroup();
         if (app.contact().getList().size() == 0) {
             app.hbm().createContact(app.contact().generateContact());
